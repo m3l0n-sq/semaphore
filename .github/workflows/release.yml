@@ -3,8 +3,8 @@ name: Community Release
 'on':
   push:
     tags:
-      - 'v[0-9]+.[0-9]+.[0-9]+'
-      - v*-rc*
+      - 'v[0-9]*.[0-9]*.[0-9]*'
+      - 'v[0-9]*.[0-9]*.[0-9]*-*'
 
 jobs:
   release:
@@ -73,7 +73,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           images: |
-            ${{secrets.DOCKER_REGISTRY}}/{{ secrets.DOCKER_NAMESPACE }}/semaphore
+            ${{ secrets.DOCKER_REGISTRY }}/${{ secrets.DOCKER_NAMESPACE }}/semaphore
           labels: |
             org.opencontainers.image.vendor=${{ github.repository_owner }}
             maintainer=${{ github.repository_owner }}
