@@ -39,6 +39,17 @@
       <v-app-bar-nav-icon @click="showDrawer()"></v-app-bar-nav-icon>
       <v-toolbar-title>{{ $t('schedule') }}</v-toolbar-title>
       <v-spacer></v-spacer>
+      <v-text-field
+        v-model="search"
+        append-icon="mdi-magnify"
+        :label="$t('search')"
+        single-line
+        hide-details
+        clearable
+        dense
+        class="mr-4"
+        style="max-width: 260px;"
+      ></v-text-field>
       <v-menu
         offset-y
       >
@@ -83,9 +94,10 @@
     <v-data-table
       :headers="headers"
       :items="items"
-      hide-default-footer
+      :search="search"
+      :items-per-page="10"
+      :footer-props="{ itemsPerPageOptions: [10, 25, 50, -1] }"
       class="mt-4"
-      :items-per-page="Number.MAX_VALUE"
       style="
           max-width: calc(var(--breakpoint-xl) - var(--nav-drawer-width) - 200px);
           margin: auto;
@@ -170,6 +182,7 @@ export default {
     return {
       openedItems: [],
       scheduleType: null,
+      search: '',
     };
   },
   methods: {

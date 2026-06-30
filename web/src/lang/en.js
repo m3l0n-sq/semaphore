@@ -2,6 +2,7 @@ export default {
   checkInterval: 'checkInterval',
   newCommitCheckInterval: 'New commit check interval',
   schedule: 'Schedule',
+  search: 'Search',
   newSchedule: 'New Schedule',
   deleteSchedule: 'Delete Schedule',
   editSchedule: 'Edit Schedule',
